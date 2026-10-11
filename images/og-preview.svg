@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AVEC VINCENT — Cours particuliers à Lyon</title>
+  <desc id="desc">Cours particuliers à domicile à Lyon et en visioconférence, du lycée à la prépa ECG.</desc>
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <circle cx="1040" cy="-40" r="320" fill="#edf2f3"/>
+  <circle cx="1130" cy="565" r="220" fill="#eee9df"/>
+  <path d="M0 535 C190 470 330 595 500 545 S840 460 1200 510 V630 H0Z" fill="#eef3f1"/>
+  <rect x="72" y="68" width="72" height="72" rx="22" fill="#142131"/>
+  <path d="M91 117 103 91h7l12 26h-8l-2.3-5.8H99.3L97 117h-6Zm11.8-12h5.7l-2.9-7.4-2.8 7.4Z" fill="#fffdf8"/>
+  <circle cx="127" cy="91" r="5" fill="#ad8c51"/>
+  <text x="170" y="116" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="5">AVEC VINCENT</text>
+  <text x="72" y="250" fill="#234d67" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="4">COURS PARTICULIERS À LYON</text>
+  <text x="72" y="334" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Comprendre.</text>
+  <text x="72" y="414" fill="#ad8c51" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Progresser.</text>
+  <text x="72" y="475" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="25">Lycée · prépa ECG · à domicile et en visio</text>
+  <rect x="760" y="208" width="350" height="190" rx="28" fill="#fffdf8" stroke="#e9e5db" stroke-width="2"/>
+  <text x="800" y="286" fill="#234d67" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">50 %</text>
+  <text x="800" y="326" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">de crédit d’impôt*</text>
+  <text x="800" y="360" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Cours individuels à domicile</text>
+  <text x="800" y="388" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Organisme déclaré SAP</text>
+  <text x="72" y="574" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Mathématiques · HGGSP · langues · méthodologie</text>
+  <text x="1110" y="574" text-anchor="end" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="14">* Sous conditions applicables</text>
+</svg>
