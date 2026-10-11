@@ -1863,3 +1863,92 @@ main{background:var(--bg)}
 /* V4 bis — une seule photo de professeur, centrée dans la carte de confiance. */
 .page-home .trust-card-portraits{grid-template-columns:minmax(0,1fr);justify-items:center}
 .page-home .trust-card-portraits figure{width:max-content;max-width:100%}
+
+
+/* V4 bis — module de confiance : accueil humain, portrait visible et respiration autour du cadre. */
+.page-home .trust-zone{
+  padding:clamp(48px,6vw,76px) 0;
+}
+.page-home .trust-zone .hero-trust-section{
+  width:min(calc(100% - 48px),var(--max));
+}
+.page-home .trust-card{
+  width:min(100%,1040px);
+  margin-inline:auto;
+  border-radius:24px;
+  background:#ffffffdf;
+  border:1px solid #d4dfde;
+  box-shadow:0 18px 42px #14213112;
+}
+.page-home .trust-card-main{
+  display:grid;
+  grid-template-columns:minmax(210px,.68fr) minmax(0,1.32fr);
+  align-items:center;
+  gap:clamp(28px,5vw,58px);
+  padding:clamp(30px,4vw,50px);
+}
+.page-home .trust-card-portrait{margin:0;text-align:center}
+.page-home .trust-card-portrait .hero-portrait-frame{
+  display:block;
+  width:min(100%,230px);
+  height:280px;
+  margin-inline:auto;
+  overflow:hidden;
+  border:6px solid #fff;
+  border-radius:20px;
+  background:#e8eeee;
+  box-shadow:0 12px 28px #14213120;
+}
+.page-home .trust-card-portrait img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 25%;
+}
+.page-home .trust-card-portrait figcaption{
+  margin-top:11px;
+  color:var(--blue);
+  font-size:.7rem;
+  font-weight:750;
+  letter-spacing:.04em;
+}
+.page-home .trust-card-copy .eyebrow{margin-bottom:12px}
+.page-home .trust-card-copy h2{max-width:570px;font-size:clamp(2.1rem,3.5vw,3.1rem);line-height:1.04}
+.page-home .trust-card-copy p{max-width:620px;margin-top:18px;font-size:.98rem;line-height:1.72}
+.page-home .trust-card-tax{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:17px;
+  width:min(100%,760px);
+  min-height:88px;
+  margin:18px auto 0;
+  padding:17px 26px;
+  border:1px solid #d8e1e0;
+  border-radius:18px;
+  background:#fffdf9;
+  box-shadow:0 10px 28px #1421310c;
+}
+.page-home .trust-card-tax .tax-number{font-size:2.45rem}
+.page-home .trust-card-tax>span:last-child{font-size:.82rem;line-height:1.4}
+.page-home .trust-card-tax small{display:block;margin-top:4px;font-size:.66rem}
+@media(max-width:1000px) and (min-width:781px){
+  .page-home .trust-card-main{grid-template-columns:minmax(175px,.65fr) minmax(0,1.35fr);gap:30px;padding:32px}
+  .page-home .trust-card-portrait .hero-portrait-frame{width:190px;height:245px}
+}
+@media(max-width:780px){
+  .page-home .trust-zone{padding:42px 0 50px}
+  .page-home .trust-zone .hero-trust-section{width:calc(100% - 32px)}
+  .page-home .trust-card{border-radius:20px}
+  .page-home .trust-card-main{grid-template-columns:1fr;gap:22px;padding:25px 22px 26px}
+  .page-home .trust-card-portrait .hero-portrait-frame{width:136px;height:168px;border-radius:17px}
+  .page-home .trust-card-portrait figcaption{margin-top:8px;font-size:.65rem}
+  .page-home .trust-card-copy .eyebrow{margin-bottom:10px}
+  .page-home .trust-card-copy h2{font-size:clamp(1.95rem,8vw,2.4rem)}
+  .page-home .trust-card-copy p{margin-top:13px;font-size:.88rem;line-height:1.65}
+  .page-home .trust-card-tax{justify-content:flex-start;width:calc(100% - 32px);min-height:78px;margin-top:15px;padding:15px 18px;gap:12px;border-radius:16px}
+  .page-home .trust-card-tax .tax-number{font-size:2.05rem}
+  .page-home .trust-card-tax>span:last-child{font-size:.72rem}
+  .page-home .trust-card-tax small{font-size:.59rem}
+}
