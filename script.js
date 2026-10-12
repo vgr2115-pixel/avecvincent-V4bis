@@ -2,7 +2,7 @@
    Pour changer vos coordonnées, modifier uniquement ces valeurs.
    SIREN, SIRET et numéro SAP se complètent dans legal.html. */
 const CONFIG = Object.freeze({
-  email: "",
+  email: "contact@avecvincent.fr",
   phone: "",
   phoneLink: "",
   formEndpoint: "https://script.google.com/macros/s/AKfycby7wINsDuFB15yDJCYJEE1Ya_2E6bA_VTM6MB31VdTW9Vag9DWaeOtDDbSQa-1fm-oW2g/exec"
