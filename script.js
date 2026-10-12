@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-contact]").forEach(el => {
     const email = el.dataset.contact === "email";
     const value = email ? CONFIG.email : CONFIG.phone;
-    el.textContent = value || (email ? "E-mail à compléter" : "Téléphone à compléter");
+    el.textContent = value || (email ? "E-mail non renseigné" : "Téléphone non renseigné");
     if (value) {
       el.href = email ? "mailto:" + value : "tel:" + CONFIG.phoneLink;
       el.removeAttribute("aria-disabled");
