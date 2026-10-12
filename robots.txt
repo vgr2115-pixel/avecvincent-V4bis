@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /legal.html
-Sitemap: https://vgr2115-pixel.github.io/avecvincent-V4bis/sitemap.xml
+Sitemap: https://avecvincent.fr/sitemap.xml
