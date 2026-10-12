@@ -3,8 +3,8 @@
    SIREN, SIRET et numéro SAP se complètent dans legal.html. */
 const CONFIG = Object.freeze({
   email: "contact@avecvincent.fr",
-  phone: "",
-  phoneLink: "",
+  phone: "+33 6 03 87 22 63",
+  phoneLink: "+33603872263",
   formEndpoint: "https://script.google.com/macros/s/AKfycby7wINsDuFB15yDJCYJEE1Ya_2E6bA_VTM6MB31VdTW9Vag9DWaeOtDDbSQa-1fm-oW2g/exec"
 });
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     : (aliases[params.get("matiere")] || params.get("matiere"));
   if (requested && Array.from(subject.options).some(option => option.value === requested)) subject.value = requested;
   const status = form.querySelector(".form-status");
-  const emailFallback = CONFIG.email || "l’adresse e-mail à compléter";
+  const emailFallback = CONFIG.email;
   const submitButton = form.querySelector('button[type="submit"]');
   const responseFrame = document.querySelector("#form-response");
   const toast = document.querySelector("#form-toast");
