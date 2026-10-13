@@ -1952,3 +1952,17 @@ main{background:var(--bg)}
   .page-home .trust-card-tax>span:last-child{font-size:.72rem}
   .page-home .trust-card-tax small{font-size:.59rem}
 }
+
+/* Cours & tarifs : une seule colonne sur téléphone et tablette étroite,
+   pour garder matières, descriptions et liens sur le même axe. */
+@media(max-width:1000px){
+  .page-courses .course-row{
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    gap:12px;
+  }
+  .page-courses .course-row>.text-link{
+    grid-column:1;
+    justify-self:start;
+  }
+}
