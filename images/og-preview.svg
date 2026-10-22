@@ -1,23 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">AVEC VINCENT — Cours particuliers à Lyon</title>
-  <desc id="desc">Cours particuliers à domicile à Lyon et en visioconférence, du lycée à la prépa ECG.</desc>
-  <rect width="1200" height="630" fill="#faf9f5"/>
-  <circle cx="1040" cy="-40" r="320" fill="#edf2f3"/>
-  <circle cx="1130" cy="565" r="220" fill="#eee9df"/>
-  <path d="M0 535 C190 470 330 595 500 545 S840 460 1200 510 V630 H0Z" fill="#eef3f1"/>
-  <rect x="72" y="68" width="72" height="72" rx="22" fill="#142131"/>
-  <path d="M91 117 103 91h7l12 26h-8l-2.3-5.8H99.3L97 117h-6Zm11.8-12h5.7l-2.9-7.4-2.8 7.4Z" fill="#fffdf8"/>
-  <circle cx="127" cy="91" r="5" fill="#ad8c51"/>
-  <text x="170" y="116" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" letter-spacing="5">AVEC VINCENT</text>
-  <text x="72" y="250" fill="#234d67" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="4">COURS PARTICULIERS À LYON</text>
-  <text x="72" y="334" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Comprendre.</text>
-  <text x="72" y="414" fill="#ad8c51" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700" letter-spacing="-2">Progresser.</text>
-  <text x="72" y="475" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="25">Lycée · prépa ECG · à domicile et en visio</text>
-  <rect x="760" y="208" width="350" height="190" rx="28" fill="#fffdf8" stroke="#e9e5db" stroke-width="2"/>
-  <text x="800" y="286" fill="#234d67" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">50 %</text>
-  <text x="800" y="326" fill="#142131" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">de crédit d’impôt*</text>
-  <text x="800" y="360" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Cours individuels à domicile</text>
-  <text x="800" y="388" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Organisme déclaré SAP</text>
-  <text x="72" y="574" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="16">Mathématiques · HGGSP · langues · méthodologie</text>
-  <text x="1110" y="574" text-anchor="end" fill="#626d76" font-family="Arial, Helvetica, sans-serif" font-size="14">* Sous conditions applicables</text>
-</svg>
+<title id="title">AVEC VINCENT — Cours particuliers à Lyon</title><desc id="desc">Un cap clair. La confiance pour progresser. Du lycée à la prépa ECG, à Lyon et en visioconférence.</desc>
+<defs><linearGradient id="blue" x2="1" y2="1"><stop stop-color="#102d42"/><stop offset="1" stop-color="#397685"/></linearGradient></defs>
+<rect width="1200" height="630" fill="#f7f9fc"/><text x="70" y="80" fill="#182a3b" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="4">AVEC VINCENT<tspan fill="#2d6a7a">.</tspan></text>
+<text x="70" y="162" fill="#225773" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">COURS PARTICULIERS</text>
+<text x="70" y="266" fill="#182a3b" font-family="Arial, sans-serif" font-size="65" font-weight="700" letter-spacing="-3">Un cap clair.</text>
+<text x="70" y="344" fill="#2d6a7a" font-family="Arial, sans-serif" font-size="65" font-weight="700" letter-spacing="-3">La confiance</text>
+<text x="70" y="422" fill="#2d6a7a" font-family="Arial, sans-serif" font-size="65" font-weight="700" letter-spacing="-3">pour progresser.</text>
+<text x="70" y="508" fill="#536473" font-family="Arial, sans-serif" font-size="23">Lycée · Prépa ECG</text><text x="70" y="550" fill="#536473" font-family="Arial, sans-serif" font-size="23">À domicile à Lyon et en visioconférence</text>
+<rect x="755" y="62" width="375" height="506" rx="30" fill="url(#blue)"/>
+<text x="790" y="122" fill="#d7e6ed" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">AVEC VINCENT</text>
+<text x="790" y="236" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">Comprendre.</text><text x="790" y="286" fill="white" font-family="Arial, sans-serif" font-size="32" font-weight="700">Appliquer.</text><text x="790" y="336" fill="#c7e2e8" font-family="Arial, sans-serif" font-size="32" font-weight="700">Avancer.</text>
+<path d="M755 485C820 485 810 450 870 450S950 480 985 425 1050 435 1130 380" stroke="#9fd8df" stroke-width="2" fill="none"/><circle cx="985" cy="425" r="5" fill="#9fd8df"/>
+<text x="790" y="528" fill="#d7e6ed" font-family="Arial, sans-serif" font-size="19">avecvincent.fr</text></svg>

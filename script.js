@@ -50,88 +50,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Une seule animation discrète au défilement : le contenu reste lisible sans JS.
-  const revealItems = document.querySelectorAll("[data-reveal]");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (revealItems.length && !reducedMotion && "IntersectionObserver" in window) {
-    document.documentElement.classList.add("js-reveal");
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      });
-    }, {rootMargin: "0px 0px -12% 0px", threshold: 0.08});
-    revealItems.forEach(item => revealObserver.observe(item));
-  } else {
-    revealItems.forEach(item => item.classList.add("is-visible"));
-  }
-
   const form = document.querySelector("#formulaire");
   if (!form) return;
   const subject = form.elements.namedItem("subject");
+  const level = form.elements.namedItem("level");
   const params = new URLSearchParams(window.location.search);
-  const aliases = {
-    "Géopolitique & HGGSP": "Géopolitique / HGGSP",
-    "BAC · BCE · ECRICOME": "BCE / ECRICOME"
-  };
-  const requested = params.get("demande") === "specifique"
-    ? "Autre / demande spécifique"
-    : (aliases[params.get("matiere")] || params.get("matiere"));
+  const aliases = {"Géopolitique & HGGSP": "Géopolitique / HGGSP", "bac · BCE · ECRICOME": "Bac / BCE / ECRICOME", "BAC · BCE · ECRICOME": "Bac / BCE / ECRICOME", "BAC": "bac"};
+  const requested = params.get("demande") === "specifique" ? "Autre / demande spécifique" : (aliases[params.get("matiere")] || params.get("matiere"));
   if (requested && Array.from(subject.options).some(option => option.value === requested)) subject.value = requested;
+  const validatePair = () => {
+    const invalid = level.value.startsWith("Prépa") && ["Français", "Philosophie", "bac"].includes(subject.value);
+    subject.setCustomValidity(invalid ? "Cette matière est proposée uniquement au lycée. Pour une demande particulière en prépa, choisissez « Autre / demande spécifique »." : "");
+  };
+  subject.addEventListener("change", validatePair);
+  level.addEventListener("change", validatePair);
+  validatePair();
   const status = form.querySelector(".form-status");
-  const emailFallback = CONFIG.email;
   const submitButton = form.querySelector('button[type="submit"]');
-  const responseFrame = document.querySelector("#form-response");
-  const toast = document.querySelector("#form-toast");
-  let awaitingResponse = false;
-  let requestTimer;
-  let toastTimer;
-  let toastHideTimer;
-  const showToast = (message, kind = "success") => {
-    if (!toast) return;
-    clearTimeout(toastTimer);
-    clearTimeout(toastHideTimer);
-    toast.textContent = message;
-    toast.dataset.kind = kind;
-    toast.hidden = false;
-    requestAnimationFrame(() => toast.classList.add("is-visible"));
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("is-visible");
-      toastHideTimer = setTimeout(() => { toast.hidden = true; }, 260);
-    }, kind === "pending" ? 15000 : 6500);
-  };
-  const finishRequest = () => {
-    awaitingResponse = false;
-    clearTimeout(requestTimer);
-    if (submitButton) submitButton.disabled = false;
-  };
-  form.action = CONFIG.formEndpoint;
-  responseFrame?.addEventListener("load", () => {
-    if (!awaitingResponse) return;
-    finishRequest();
-    form.reset();
-    status.textContent = "Votre demande a bien été transmise.";
-    showToast("Demande envoyée. Je vous répondrai rapidement par e-mail.");
-  });
-  form.addEventListener("submit", event => {
+  let sending = false;
+  form.addEventListener("submit", async event => {
     event.preventDefault();
-    if (!form.reportValidity()) return;
-    if (!CONFIG.formEndpoint || CONFIG.formEndpoint.includes("REPLACE_WITH")) {
-      status.textContent = "Le formulaire est en cours de configuration. Vous pouvez écrire à " + emailFallback + ".";
-      showToast("Le formulaire est momentanément indisponible. Écrivez à " + emailFallback + ".", "error");
-      return;
-    }
-    awaitingResponse = true;
-    if (submitButton) submitButton.disabled = true;
+    validatePair();
+    if (sending || !form.reportValidity()) return;
+    sending = true;
+    submitButton.disabled = true;
+    form.setAttribute("aria-busy", "true");
+    status.dataset.kind = "pending";
     status.textContent = "Envoi de votre demande…";
-    showToast("Envoi de votre demande…", "pending");
-    requestTimer = setTimeout(() => {
-      if (!awaitingResponse) return;
-      finishRequest();
-      status.textContent = "La confirmation n’a pas pu être reçue. Vous pouvez écrire à " + emailFallback + ".";
-      showToast("Le délai de réponse est dépassé. Vérifiez votre boîte mail ou écrivez à " + emailFallback + ".", "error");
-    }, 15000);
-    HTMLFormElement.prototype.submit.call(form);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
+    try {
+      // A simple URL-encoded POST avoids preflight. Success requires the API's explicit acknowledgement.
+      const response = await fetch(CONFIG.formEndpoint, {method:"POST", body:new URLSearchParams(new FormData(form)), signal:controller.signal, credentials:"omit", redirect:"follow"});
+      if (!response.ok) throw new Error("http_error");
+      const result = await response.json();
+      if (result.ok !== true || typeof result.reference !== "string" || !result.reference.trim()) throw new Error("unconfirmed");
+      form.reset();
+      validatePair();
+      status.dataset.kind = "success";
+      status.textContent = "Votre demande a bien été reçue. Référence : " + result.reference + ". Je vous répondrai personnellement par e-mail.";
+    } catch (error) {
+      status.dataset.kind = "error";
+      status.textContent = "La réception de votre demande n’a pas pu être confirmée. Vos informations sont conservées dans le formulaire. Pour vérifier sa réception ou me contacter, écrivez à " + CONFIG.email + ".";
+    } finally {
+      clearTimeout(timeout);
+      sending = false;
+      submitButton.disabled = false;
+      form.removeAttribute("aria-busy");
+    }
   });
 });
