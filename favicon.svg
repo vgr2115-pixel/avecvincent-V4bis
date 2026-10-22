@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>AVEC VINCENT</title>
-  <rect width="64" height="64" rx="16" fill="#142131"/>
-  <path d="M14 17h9l9 25 9-25h9L36 49h-8z" fill="#fffdf8"/>
-  <circle cx="51" cy="43" r="4.25" fill="#c9a253"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title id="title">AVEC VINCENT</title><rect width="64" height="64" rx="14" fill="#123c53"/><path d="M13 16h9l10 27 10-27h9L36 49h-8z" fill="#faf9f6"/><circle cx="51" cy="47" r="4" fill="#9fd8df"/></svg>
