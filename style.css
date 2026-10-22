@@ -77,7 +77,6 @@ button,a,summary,input,select,textarea{-webkit-tap-highlight-color:transparent}
 .signature-path{position:absolute;bottom:40px;left:0;right:0;z-index:0}
 .signature-path svg{display:block;width:100%;height:auto}
 .signature-bottom{position:relative;display:flex;justify-content:space-between;gap:14px;color:#e4f0f4;font-size:.72rem}
-.signature-bottom>span:last-child{font-size:1.3rem}
 .progress-path{stroke-dasharray:650;stroke-dashoffset:650;animation:draw-path 1.5s .15s ease forwards}
 @keyframes draw-path{to{stroke-dashoffset:0}
 }
@@ -388,3 +387,8 @@ body{background:#fff;color:#000}
 .legal-layout{display:block}
 .legal-nav{display:none}
 }
+/* Plain-language homepage: fewer sections, larger place for the actual offer. */
+.home-hero h1{font-size:clamp(2.65rem,4vw,3.8rem);line-height:1.1}
+.page-home>.home-hero+.section{border-top:1px solid var(--line);padding-top:64px}
+@media(max-width:780px){.home-hero h1{font-size:clamp(2.55rem,8vw,3.5rem)}.page-home>.home-hero+.section{padding-top:44px}}
+@media(max-width:440px){.home-hero h1{font-size:2.6rem}}
