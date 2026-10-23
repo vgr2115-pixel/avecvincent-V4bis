@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (result.ok !== true || typeof result.reference !== "string" || !result.reference.trim()) throw new Error("unconfirmed");
       form.reset();
       status.dataset.kind = "success";
-      status.textContent = "Le message a bien été reçu. Référence : " + result.reference + ". Je répondrai personnellement par e-mail.";
+      status.textContent = "Le message a bien été reçu. Je répondrai personnellement par e-mail.";
     } catch (error) {
       status.dataset.kind = "error";
       status.textContent = "La réception du message n’a pas pu être confirmée. Les informations sont conservées dans le formulaire. Pour vérifier sa réception ou me contacter : " + CONFIG.email + ".";
