@@ -77,6 +77,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Show the offer for one school level at a time; keep both sections readable without JS.
+  document.querySelectorAll("[data-offer-browser]").forEach(browser => {
+    const picker = browser.querySelector(".offer-picker");
+    const tabs = Array.from(browser.querySelectorAll("[data-offer-tab]"));
+    const views = Array.from(browser.querySelectorAll("[data-offer-panel]"));
+    if (!picker || !tabs.length || !views.length) return;
+    const wideOffer = window.matchMedia("(min-width:1000px)");
+    let currentTab = null;
+    let contentMotion = null;
+    const select = (tab, focus = false) => {
+      const changed = currentTab && currentTab !== tab;
+      contentMotion?.cancel();
+      contentMotion = null;
+      tabs.forEach(item => {
+        const active = item === tab;
+        item.setAttribute("aria-selected", String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      views.forEach(view => {
+        const active = wideOffer.matches || view.dataset.offerPanel === tab.dataset.offerTab;
+        view.hidden = !active;
+        if (wideOffer.matches) {
+          view.removeAttribute("role");
+          view.setAttribute("aria-labelledby", "offre-" + view.dataset.offerPanel + "-titre");
+          view.removeAttribute("tabindex");
+        } else {
+          view.setAttribute("role", "tabpanel");
+          view.setAttribute("aria-labelledby", "offre-tab-" + view.dataset.offerPanel);
+          view.tabIndex = 0;
+        }
+        if (active && changed && !wideOffer.matches && !reducedMotion.matches && typeof view.animate === "function") {
+          contentMotion = view.animate({opacity:[0.3, 1]}, {duration:160, easing:"ease-out"});
+        }
+      });
+      picker.hidden = wideOffer.matches;
+      currentTab = tab;
+      if (focus) tab.focus({preventScroll:true});
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", event => {
+        let next;
+        if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft") next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        select(tabs[next], true);
+      });
+    });
+    select(tabs[0]);
+    wideOffer.addEventListener("change", () => {
+      const focusedView = views.find(view => view.contains(document.activeElement));
+      const focusedTab = focusedView && tabs.find(tab => tab.dataset.offerTab === focusedView.dataset.offerPanel);
+      select(focusedTab || currentTab || tabs[0]);
+    });
+    browser.classList.add("has-offer-picker");
+  });
+
   // Keep native details without JavaScript; enhance each disclosure by its purpose.
   const panels = Array.from(document.querySelectorAll('details[name="page-panels"]'));
   const panelStates = new Map();
