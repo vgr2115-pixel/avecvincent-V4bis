@@ -23,5 +23,9 @@ const root = path.resolve(__dirname, '..');
   for(const name of ['og-avec-vincent','og-cours','og-methode','og-contact','og-credit-impot','og-preview']) {
     await sharp(path.join(root,'images',`${name}.svg`)).png().toFile(path.join(root,'images',`${name}.png`));
   }
+  // Stable branded URLs refresh old browser icons without changing the visual mark.
+  for (const [source,target] of Object.entries({"favicon.svg": "avec-vincent-favicon.svg", "favicon-96x96.png": "avec-vincent-favicon.png", "apple-touch-icon.png": "avec-vincent-apple-touch-icon.png", "icon-192.png": "avec-vincent-icon-192.png", "icon-512.png": "avec-vincent-icon-512.png"})) {
+    await fs.copyFile(path.join(root,source),path.join(root,target));
+  }
   console.log('Generated browser / iPhone icons and six 1200×630 sharing images.');
 })().catch(e=>{console.error(e);process.exit(1)});
